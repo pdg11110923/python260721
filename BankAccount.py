@@ -25,4 +25,4 @@ print(account1)
 #외부에서 접근(인스턴스)
 #print(account1.__balance) #접근 불가   
 #테스트 코드
-print(account1._BankAccount__balance) #접근 가능이지만 권장하지 않음 
+#print(account1._BankAccount__balance) #접근 가능이지만 권장하지 않음 
