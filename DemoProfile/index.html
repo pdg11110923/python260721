@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>박대균 | Portfolio</title>
+    <meta
+      name="description"
+      content="박대균의 개인 포트폴리오 웹사이트입니다. Python, Web, Java 기반 개발 경험을 소개합니다."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a href="#home" class="logo">PDG</a>
+        <button class="nav-toggle" aria-label="메뉴 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <section id="home" class="hero-content container">
+        <div class="hero-text">
+          <p class="eyebrow">Python · Web · Java Developer</p>
+          <h1>안녕하세요, <span>박대균</span>입니다.</h1>
+          <p class="intro">
+            사용자 경험을 생각하는 개발자입니다. 데이터 처리부터 웹 서비스 구현까지
+            폭넓게 다루며, 안정적이고 유지보수하기 쉬운 코드를 지향합니다.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+            <a href="#contact" class="btn btn-secondary">연락하기</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Who am I?</h3>
+          <ul>
+            <li>백엔드/프론트엔드 전반 개발 경험</li>
+            <li>Python 자동화 및 데이터 처리</li>
+            <li>Java 기반 서비스 구현</li>
+          </ul>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="about" class="section container">
+        <div class="section-title">
+          <p class="eyebrow">About Me</p>
+          <h2>기술과 문제 해결을 연결하는 개발자</h2>
+        </div>
+        <div class="about-grid">
+          <p>
+            저는 웹서비스 개발과 자동화, 데이터 기반 문제 해결에 관심이 많은 개발자입니다.
+            Python으로 빠르게 검증하고, 웹에서는 사용자 친화적인 인터페이스를 만들며,
+            Java로 안정적인 서비스 구조를 설계하는 데 강점을 가지고 있습니다.
+          </p>
+          <p>
+            작은 기능 하나라도 의미 있게 만들고, 협업과 유지보수까지 고려하는 개발 스타일을 지향합니다.
+            앞으로도 실용적이고 확장 가능한 솔루션을 구현해 나가겠습니다.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills" class="section section-alt">
+        <div class="container">
+          <div class="section-title">
+            <p class="eyebrow">Skills</p>
+            <h2>주요 기술 스택</h2>
+          </div>
+          <div class="skills-grid">
+            <article class="card">
+              <h3>Python</h3>
+              <p>자동화, 데이터 처리, 스크립트 개발에 익숙합니다.</p>
+            </article>
+            <article class="card">
+              <h3>Web</h3>
+              <p>HTML5, CSS3, JavaScript로 반응형 웹사이트를 구현합니다.</p>
+            </article>
+            <article class="card">
+              <h3>Java</h3>
+              <p>객체지향 설계와 안정적인 서비스 구조 구현에 중점을 둡니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section container">
+        <div class="section-title">
+          <p class="eyebrow">Projects</p>
+          <h2>작업한 프로젝트들</h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3>개인 포트폴리오 웹사이트</h3>
+            <p>HTML, CSS, JavaScript 기반으로 만든 반응형 포트폴리오 사이트입니다.</p>
+          </article>
+          <article class="project-card">
+            <h3>Python 자동화 툴</h3>
+            <p>반복 업무를 자동화하고, 처리 결과를 효율적으로 정리하는 도구를 제작했습니다.</p>
+          </article>
+          <article class="project-card">
+            <h3>Java 기반 서비스</h3>
+            <p>객체지향 원칙을 바탕으로 유지보수 가능한 구조의 프로그램을 구현했습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-alt">
+        <div class="container contact-box">
+          <div class="section-title">
+            <p class="eyebrow">Contact</p>
+            <h2>연락처</h2>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">✉</div>
+            <p class="contact-label">이메일로 연락하기</p>
+            <a href="mailto:pdg11110923@gmail.com" class="contact-email">
+              pdg11110923@gmail.com
+            </a>
+            <p class="contact-text">
+              새로운 프로젝트나 협업 기회가 있다면 언제든 편하게 연락주세요.
+            </p>
+            <div class="contact-actions">
+              <a href="mailto:pdg11110923@gmail.com" class="btn btn-primary">메일 보내기</a>
+              <button type="button" class="btn btn-secondary copy-btn" data-email="pdg11110923@gmail.com">
+                이메일 복사
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> 박대균. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

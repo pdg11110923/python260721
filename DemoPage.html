@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Demo Page — HTML5 · CSS3 · JavaScript 연습</title>
+  <style>
+    :root{
+      --bg:#f6f8fa;
+      --card:#ffffff;
+      --primary:#0b78d1;
+      --text:#222;
+      --muted:#666;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,Segoe UI,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.4}
+    header{background:linear-gradient(90deg,var(--primary),#3aa0ff);color:#fff;padding:28px 16px}
+    .container{max-width:1000px;margin:20px auto;padding:0 16px}
+    nav{display:flex;gap:12px;flex-wrap:wrap}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:6px 10px;border-radius:6px;opacity:0.95}
+    nav a:hover{opacity:1;filter:brightness(1.06)}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(12,20,30,0.06)}
+    h1,h2{margin:0 0 12px 0}
+    p{margin:0 0 12px}
+    .small{color:var(--muted);font-size:0.95rem}
+    .section-list{display:grid;gap:12px;margin-top:12px}
+
+    /* Buttons & form */
+    .btn{background:var(--primary);color:#fff;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    .muted{background:transparent;border:1px solid #ddd;padding:8px;border-radius:8px}
+
+    /* Responsive */
+    @media(max-width:880px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    /* Small demo animation */
+    .pulse{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,#fff, #f0f8ff);transition:transform .2s}
+    .pulse:hover{transform:scale(1.03)}
+
+    /* Canvas area */
+    #drawCanvas{width:100%;height:220px;border-radius:8px;border:1px solid #e5e7eb;background:#fff}
+
+    footer{margin:28px 0 60px;color:var(--muted);text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Demo Page — HTML5 · CSS3 · JavaScript 연습</h1>
+      <p class="small">이 한 페이지에서 HTML 시맨틱, CSS 기초/고급, 그리고 자바스크립트 예제를 실습해보세요.</p>
+      <nav>
+        <a href="#html">HTML5</a>
+        <a href="#css">CSS3</a>
+        <a href="#js">JavaScript</a>
+        <a href="#interactive">인터랙티브</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <div class="grid">
+      <section class="card" id="html">
+        <h2>HTML5 기초</h2>
+        <p class="small">시맨틱 태그와 간단한 폼 예제.</p>
+
+        <article class="section-list">
+          <div>
+            <strong>&lt;header&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;</strong>
+            <p class="small">문서의 구조를 시맨틱하게 구성하면 접근성과 SEO가 좋아집니다.</p>
+          </div>
+
+          <div>
+            <strong>간단한 폼</strong>
+            <form id="contact" class="small">
+              <label>이름<br><input name="name" placeholder="홍길동" required></label><br><br>
+              <label>이메일<br><input name="email" type="email" placeholder="email@example.com" required></label><br><br>
+              <label>메시지<br><textarea name="msg" rows="3" placeholder="메시지를 입력하세요."></textarea></label><br>
+              <button class="btn" type="submit">전송</button>
+            </form>
+            <div id="contactResult" class="small" style="margin-top:8px;color:var(--muted)"></div>
+          </div>
+
+          <div>
+            <strong>미디어</strong>
+            <p class="small">HTML5는 오디오/비디오와 캔버스를 네이티브로 지원합니다.</p>
+            <details>
+              <summary>간단한 예시 보기</summary>
+              <video controls width="100%" style="max-width:420px;margin-top:8px">
+                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+                브라우저가 비디오 태그를 지원하지 않습니다.
+              </video>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <aside class="card" id="css">
+        <h2>CSS3 테크닉</h2>
+        <p class="small">변수, Flexbox/Grid, 애니메이션, 반응형 레이아웃.</p>
+
+        <div style="display:flex;gap:8px;flex-direction:column">
+          <div>
+            <label class="small">기본 색상 변경: <input type="color" id="primaryColor" value="#0b78d1"></label>
+          </div>
+          <div>
+            <button id="toggleTheme" class="muted">다크 테마 토글</button>
+          </div>
+          <div style="margin-top:8px">
+            <div class="pulse">간단한 hover 효과와 transition</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" id="js" style="margin-top:18px">
+      <h2>JavaScript 기초</h2>
+      <p class="small">DOM, 이벤트, 간단한 네트워크 요청 예제.</p>
+
+      <div class="section-list">
+        <div>
+          <strong>DOM 조작</strong>
+          <p class="small">아래 버튼을 누르면 새로운 항목이 리스트에 추가됩니다.</p>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="itemText" placeholder="추가할 텍스트">
+            <button id="addItem" class="btn">추가</button>
+          </div>
+          <ul id="items" style="margin-top:8px"></ul>
+        </div>
+
+        <div>
+          <strong>Fetch 예제</strong>
+          <p class="small">공개 API에서 간단하게 데이터 받아오기.</p>
+          <button id="loadTodo" class="muted">샘플 데이터 불러오기</button>
+          <pre id="todoResult" class="small" style="white-space:pre-wrap;margin-top:8px;background:#fafafa;padding:8px;border-radius:6px"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="interactive" style="margin-top:18px">
+      <h2>인터랙티브: 캔버스 드로잉</h2>
+      <p class="small">마우스로 그림을 그려보세요.</p>
+      <canvas id="drawCanvas"></canvas>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button id="clearCanvas" class="muted">지우기</button>
+        <label class="small">브러시 색 <input type="color" id="brushColor" value="#000000"></label>
+        <label class="small">굵기 <input id="brushSize" type="range" min="1" max="30" value="3"></label>
+      </div>
+    </section>
+
+    <footer>
+      <p class="small">이 페이지는 학습용 예제입니다. 수정하면서 실습해보세요.</p>
+      <p class="small">파일: DemoPage.html</p>
+    </footer>
+  </main>
+
+  <script>
+    // 폼 전송 처리 (preventDefault를 사용해 실제 네트워크 요청 없이 처리)
+    document.getElementById('contact').addEventListener('submit', function(e){
+      e.preventDefault();
+      const f=new FormData(e.target);
+      const name=f.get('name');
+      const email=f.get('email');
+      document.getElementById('contactResult').textContent = `감사합니다, ${name}님. (이메일: ${email})`;
+      e.target.reset();
+    });
+
+    // CSS 변수 조작: 색 선택기
+    const primaryColorInput = document.getElementById('primaryColor');
+    primaryColorInput.addEventListener('input', e=>{
+      document.documentElement.style.setProperty('--primary', e.target.value);
+    });
+
+    // 다크 테마 토글 (간단 구현)
+    document.getElementById('toggleTheme').addEventListener('click', ()=>{
+      const root = document.documentElement;
+      const bg = getComputedStyle(root).getPropertyValue('--bg').trim();
+      if(bg === '#f6f8fa'){
+        root.style.setProperty('--bg','#0f1724');
+        root.style.setProperty('--card','#0b1220');
+        root.style.setProperty('--text','#e6eef8');
+        root.style.setProperty('--muted','#9fb0c9');
+      } else {
+        root.style.setProperty('--bg','#f6f8fa');
+        root.style.setProperty('--card','#ffffff');
+        root.style.setProperty('--text','#222');
+        root.style.setProperty('--muted','#666');
+      }
+    });
+
+    // DOM 추가 예제
+    const items = document.getElementById('items');
+    document.getElementById('addItem').addEventListener('click', ()=>{
+      const text = document.getElementById('itemText').value.trim();
+      if(!text) return;
+      const li = document.createElement('li');
+      li.textContent = text;
+      li.style.padding='6px 0';
+      items.appendChild(li);
+      document.getElementById('itemText').value='';
+    });
+
+    // Fetch 예제 (공개 샘플 API)
+    document.getElementById('loadTodo').addEventListener('click', async ()=>{
+      const out = document.getElementById('todoResult');
+      out.textContent = '로딩 중...';
+      try{
+        const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        const data = await res.json();
+        out.textContent = JSON.stringify(data, null, 2);
+      }catch(err){
+        out.textContent = '오류: '+err;
+      }
+    });
+
+    // Canvas 드로잉
+    const canvas = document.getElementById('drawCanvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas(){
+      const ratio = window.devicePixelRatio||1;
+      const w = canvas.clientWidth;
+      const h = 220; // 고정 높이
+      canvas.width = Math.floor(w*ratio);
+      canvas.height = Math.floor(h*ratio);
+      canvas.style.height = h+'px';
+      ctx.scale(ratio, ratio);
+      ctx.lineCap = 'round';
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let drawing=false;
+    let lastPos={x:0,y:0};
+    const brushColor = document.getElementById('brushColor');
+    const brushSize = document.getElementById('brushSize');
+
+    function getPos(evt){
+      const rect = canvas.getBoundingClientRect();
+      return {x:evt.clientX-rect.left, y:evt.clientY-rect.top};
+    }
+
+    canvas.addEventListener('mousedown', e=>{drawing=true; lastPos=getPos(e)});
+    canvas.addEventListener('mouseup', ()=>{drawing=false});
+    canvas.addEventListener('mouseleave', ()=>{drawing=false});
+    canvas.addEventListener('mousemove', e=>{
+      if(!drawing) return;
+      const p = getPos(e);
+      ctx.strokeStyle = brushColor.value;
+      ctx.lineWidth = brushSize.value;
+      ctx.beginPath();
+      ctx.moveTo(lastPos.x, lastPos.y);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+      lastPos = p;
+    });
+
+    document.getElementById('clearCanvas').addEventListener('click', ()=>{
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+    });
+
+    // 초기 설명을 콘솔에 출력
+    console.log('DemoPage ready — HTML/CSS/JS 예제');
+  </script>
+</body>
+</html>
