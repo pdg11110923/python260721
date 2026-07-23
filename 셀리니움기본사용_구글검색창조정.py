@@ -17,6 +17,10 @@ searchBox = driver.find_element(By.CLASS_NAME, "gLFyf")
 #//*[@id="APjFqb"]
 #searchBox = driver.find_element(By.XPATH,"//*[@id='APjFqb']")
 
-searchBox.send_keys("맥북")
+searchBox.send_keys("아이폰17")
 searchBox.send_keys(Keys.RETURN)
-time.sleep(5)
+time.sleep(3)
+
+#무한루프
+while True:
+    pass
